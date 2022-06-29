@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package genms.mongo;
+option go_package = "github.com/rleszilm/genms-datalayer/pkg/annotations";
+
+import "google/protobuf/descriptor.proto";
+import "annotations/bson/bson.proto";
+
+enum Comparator {
+    EQ  = 0;
+    NE  = 1;
+    GT  = 2;
+    LT  = 3;
+    GTE = 4;
+    LTE = 5;
+}
+
+enum Datastore {
+    UndefinedDatastore = 0;
+    Mongo = 1;
+}
+
+enum Generate {
+    Skip = 0;
+    Implement = 1;
+    Interface = 2;
+}
+
+message Query {
+    message Arg {
+        string name = 1;
+        Comparator comparison = 2;
+    }
+
+    enum Returns {
+        Many = 0;
+        Single = 1;
+        Stream = 2;
+    }
+
+    string name = 1;
+    repeated Arg args = 2;
+    Generate generate = 3;
+    Returns returns = 4;
+}
+
+message Collection {
+    repeated Query queries = 1;
+    Generate generate = 2;
+}
+
+extend google.protobuf.MessageOptions {
+    Collection message_options = 51001;
+}
+
+message Field {
+    message Mongo {
+        string name = 1;
+        genms.mongo.bson.Primitive primitive = 2;
+    }
+
+    bool ignore = 1;
+    string name = 2;
+    Mongo mongo = 3;
+}
+
+extend google.protobuf.FieldOptions {
+    Field field_options = 51001;
+}

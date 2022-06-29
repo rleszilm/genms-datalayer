@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package genms.mongo.bson;
+option go_package = "github.com/rleszilm/genms-datalayer/pkg/annotations/bson";
+
+import "google/protobuf/descriptor.proto";
+
+enum Primitive {
+	UndefinedPrimitive = 0;
+	Datetime = 1;
+	Decimal128 = 2;
+	ObjectID = 3;
+	Timestamp = 4;
+}

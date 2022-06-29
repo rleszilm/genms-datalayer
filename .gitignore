@@ -1,0 +1,6 @@
+/.proto
+/.vscode
+/vendor
+
+/genms-datalayer
+.swp
