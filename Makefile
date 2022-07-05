@@ -37,6 +37,7 @@ tool-chain:
 		github.com/kisielk/errcheck \
 		github.com/maxbrunsfeld/counterfeiter/v6 \
 		github.com/rleszilm/genms-version \
+		github.com/rleszilm/genms-datalayer/protoc-gen-genms-datalayer \
 		golang.org/x/lint/golint \
 		google.golang.org/protobuf/cmd/protoc-gen-go \
 		honnef.co/go/tools/cmd/staticcheck

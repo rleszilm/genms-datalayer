@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package genms.mongo.bson;
+package genms.dal.bson;
 option go_package = "github.com/rleszilm/genms-datalayer/pkg/annotations/bson";
 
 import "google/protobuf/descriptor.proto";

@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package genms.dal.example;
+option go_package = "github.com/rleszilm/genms-datalayer/protoc-gen-genms-datalayer/example";
+
+import "annotations/annotations.proto";
+import "annotations/bson/bson.proto";
+
+message All {
+    option (genms.dal.message_options) = {
+        datastores: [Mongo],
+        generate: Implement,
+        queries: [
+            {
+                name: "by id",
+                args: [{name:"id"}],
+                returns: Single,
+            }
+        ]
+    };
+
+    double s_double = 1;
+    float s_float = 2;
+    int32 s_int32 = 3;
+    int64 s_int64 = 4;
+    uint32 s_uint32 = 5;
+    uint64 s_uint64 = 6;
+    sint32 s_sint32 = 7;
+    sint64 s_sint64 = 8;
+    fixed32 s_fixed32 = 9;
+    fixed64 s_fixed64 = 10;
+    sfixed32 s_sfixed32 = 11;
+    sfixed64 s_sfixed64 = 12;
+    bool s_bool = 13;
+    string s_string = 14;
+    bytes s_bytes = 15;
+
+    enum const {
+        none = 0;
+        always = 1;
+    }
+    const e_const = 16;
+
+    message sub_message {
+        double s_double = 1;
+    }
+    sub_message m_submessage = 17;
+
+    repeated double m_double = 18;
+    map<string, double> m_string_double = 19;
+
+    oneof m_oneof {
+        string one_s_string = 20;
+        sub_message one_m_submessage = 21;
+    }
+
+    optional double os_double = 22;
+    optional float os_float = 23;
+    optional int32 os_int32 = 24;
+    optional int64 os_int64 = 25;
+    optional uint32 os_uint32 = 26;
+    optional uint64 os_uint64 = 27;
+    optional sint32 os_sint32 = 28;
+    optional sint64 os_sint64 = 29;
+    optional fixed32 os_fixed32 = 30;
+    optional fixed64 os_fixed64 = 31;
+    optional sfixed32 os_sfixed32 = 32;
+    optional sfixed64 os_sfixed64 = 33;
+    optional bool os_bool = 34;
+    optional string os_string = 35;
+    optional bytes os_bytes = 36;
+
+    optional const oe_const = 37;
+
+    optional sub_message om_submessage = 38;
+   
+}
