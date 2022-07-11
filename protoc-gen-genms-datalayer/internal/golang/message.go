@@ -22,6 +22,10 @@ func (m *Message) WithGeneratedFile(gf *GeneratedFile) {
 	}
 }
 
+func (m *Message) GoName() string {
+	return m.GoIdent.GoName
+}
+
 func (m *Message) GoKind() string {
 	return m.GoIdent.GoName
 }

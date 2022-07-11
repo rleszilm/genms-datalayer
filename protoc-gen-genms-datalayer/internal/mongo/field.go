@@ -12,14 +12,14 @@ type Field struct {
 	*golang.Field
 }
 
-func (f *Field) QualifiedMongoKind() string {
+func (f *Field) MongoKind() string {
 	switch f.Opts.GetMongo().GetPrimitive() {
 	case bson.Primitive_ObjectID:
 		i := protogen.GoIdent{GoName: "ObjectID", GoImportPath: "go.mongodb.org/mongo-driver/bson"}
 		return f.GeneratedFile.QualifiedGoIdent(i)
 	}
 
-	return f.Desc.Kind().String()
+	return f.GoKind()
 }
 
 func (f *Field) QueryName() string {
@@ -29,11 +29,7 @@ func (f *Field) QueryName() string {
 	if f.Opts.GetName() != "" {
 		return f.Opts.GetName()
 	}
-	return f.GoName
-}
-
-func (f *Field) Ignore() bool {
-	return f.Opts.GetIgnore()
+	return f.Desc.TextName()
 }
 
 func NewField(f *golang.Field) *Field {

@@ -68,8 +68,8 @@ func (f *Field) GoKind() (goType string) {
 	return goType
 }
 
-func (f *Field) QualifiedGoKind() string {
-	return f.GeneratedFile.QualifiedGoIdent(f.GoIdent)
+func (f *Field) Ignore() bool {
+	return f.Opts.GetIgnore()
 }
 
 func NewField(f *protogen.Field, opts *annotations.Field) *Field {

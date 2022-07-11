@@ -3,6 +3,8 @@ package dalmongo
 
 import (
 	time "time"
+
+	example "github.com/rleszilm/genms-datalayer/protoc-gen-genms-datalayer/example"
 )
 
 // $.G.Message.GoKind }}Config is a struct that can be used to configure a AllCollection
@@ -13,46 +15,44 @@ type AllConfig struct {
 	Timeout    time.Duration `envconfig:"timeout" default:"5s"`
 }
 
-/*
-
-All All
-ignore || name || query name || go kind || qualified go kind || qualified mongo kind
-false || SDouble || SDouble || float64 || All_SDouble || double
-false || SFloat || SFloat || float32 || All_SFloat || float
-false || SInt32 || SInt32 || int32 || All_SInt32 || int32
-false || SInt64 || SInt64 || int64 || All_SInt64 || int64
-false || SUint32 || SUint32 || uint32 || All_SUint32 || uint32
-false || SUint64 || SUint64 || uint64 || All_SUint64 || uint64
-false || SSint32 || SSint32 || int32 || All_SSint32 || sint32
-false || SSint64 || SSint64 || int64 || All_SSint64 || sint64
-false || SFixed32 || SFixed32 || uint32 || All_SFixed32 || fixed32
-false || SFixed64 || SFixed64 || uint64 || All_SFixed64 || fixed64
-false || SSfixed32 || SSfixed32 || int32 || All_SSfixed32 || sfixed32
-false || SSfixed64 || SSfixed64 || int64 || All_SSfixed64 || sfixed64
-false || SBool || SBool || bool || All_SBool || bool
-false || SString || SString || string || All_SString || string
-false || SBytes || SBytes || []byte || All_SBytes || bytes
-false || EConst || EConst || AllConst || All_EConst || enum
-false || MSubmessage || MSubmessage || *AllSubMessage || All_MSubmessage || message
-false || MDouble || MDouble || []float64 || All_MDouble || double
-false || MStringDouble || MStringDouble || map[string]float64 || All_MStringDouble || message
-false || OneSString || OneSString || *string || All_OneSString || string
-false || OneMSubmessage || OneMSubmessage || *AllSubMessage || All_OneMSubmessage || message
-false || OsDouble || OsDouble || *float64 || All_OsDouble || double
-false || OsFloat || OsFloat || *float32 || All_OsFloat || float
-false || OsInt32 || OsInt32 || *int32 || All_OsInt32 || int32
-false || OsInt64 || OsInt64 || *int64 || All_OsInt64 || int64
-false || OsUint32 || OsUint32 || *uint32 || All_OsUint32 || uint32
-false || OsUint64 || OsUint64 || *uint64 || All_OsUint64 || uint64
-false || OsSint32 || OsSint32 || *int32 || All_OsSint32 || sint32
-false || OsSint64 || OsSint64 || *int64 || All_OsSint64 || sint64
-false || OsFixed32 || OsFixed32 || *uint32 || All_OsFixed32 || fixed32
-false || OsFixed64 || OsFixed64 || *uint64 || All_OsFixed64 || fixed64
-false || OsSfixed32 || OsSfixed32 || *int32 || All_OsSfixed32 || sfixed32
-false || OsSfixed64 || OsSfixed64 || *int64 || All_OsSfixed64 || sfixed64
-false || OsBool || OsBool || *bool || All_OsBool || bool
-false || OsString || OsString || *string || All_OsString || string
-false || OsBytes || OsBytes || []byte || All_OsBytes || bytes
-false || OeConst || OeConst || *AllConst || All_OeConst || enum
-false || OmSubmessage || OmSubmessage || *AllSubMessage || All_OmSubmessage || message
-*/
+// All is struct that converts between the proto definition and the mongo definition.
+type All struct {
+	SDouble        float64                `bson:"s_double"`
+	SFloat         float32                `bson:"s_float"`
+	SInt32         int32                  `bson:"s_int32"`
+	SInt64         int64                  `bson:"s_int64"`
+	SUint32        uint32                 `bson:"s_uint32"`
+	SUint64        uint64                 `bson:"s_uint64"`
+	SSint32        int32                  `bson:"s_sint32"`
+	SSint64        int64                  `bson:"s_sint64"`
+	SFixed32       uint32                 `bson:"s_fixed32"`
+	SFixed64       uint64                 `bson:"s_fixed64"`
+	SSfixed32      int32                  `bson:"s_sfixed32"`
+	SSfixed64      int64                  `bson:"s_sfixed64"`
+	SBool          bool                   `bson:"s_bool"`
+	SString        string                 `bson:"s_string"`
+	SBytes         []byte                 `bson:"s_bytes"`
+	EConst         example.AllConst       `bson:"e_const"`
+	MSubmessage    *example.AllSubMessage `bson:"m_submessage"`
+	MDouble        []float64              `bson:"m_double"`
+	MStringDouble  map[string]float64     `bson:"m_string_double"`
+	OneSString     *string                `bson:"one_s_string"`
+	OneMSubmessage *example.AllSubMessage `bson:"one_m_submessage"`
+	OsDouble       *float64               `bson:"os_double"`
+	OsFloat        *float32               `bson:"os_float"`
+	OsInt32        *int32                 `bson:"os_int32"`
+	OsInt64        *int64                 `bson:"os_int64"`
+	OsUint32       *uint32                `bson:"os_uint32"`
+	OsUint64       *uint64                `bson:"os_uint64"`
+	OsSint32       *int32                 `bson:"os_sint32"`
+	OsSint64       *int64                 `bson:"os_sint64"`
+	OsFixed32      *uint32                `bson:"os_fixed32"`
+	OsFixed64      *uint64                `bson:"os_fixed64"`
+	OsSfixed32     *int32                 `bson:"os_sfixed32"`
+	OsSfixed64     *int64                 `bson:"os_sfixed64"`
+	OsBool         *bool                  `bson:"os_bool"`
+	OsString       *string                `bson:"os_string"`
+	OsBytes        []byte                 `bson:"os_bytes"`
+	OeConst        *example.AllConst      `bson:"oe_const"`
+	OmSubmessage   *example.AllSubMessage `bson:"om_submessage"`
+}

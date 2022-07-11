@@ -4,11 +4,11 @@ go 1.18
 
 require (
 	github.com/go-test/deep v1.0.8
+	github.com/iancoleman/strcase v0.2.0
 	github.com/kisielk/errcheck v1.6.1
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.5.0
 	github.com/rleszilm/genms-version v0.2.0
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
-	golang.org/x/text v0.3.7
 	golang.org/x/tools v0.1.11-0.20220513221640-090b14e8501f
 	google.golang.org/protobuf v1.28.0
 	honnef.co/go/tools v0.3.2
